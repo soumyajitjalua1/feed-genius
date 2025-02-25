@@ -1,54 +1,9 @@
-# Welcome to your Lovable project
+# Welcome to feed-genious
+# AI Smart Feed
 
-## Project info
+AI Smart Feed is a personalized content recommendation system that allows users to describe their content preferences in natural language. The system then curates a feed based on these preferences, pulling from various sources like Twitter/X, RSS feeds, and Reddit.
 
 **URL**: https://lovable.dev/projects/202ab3f6-48bb-4626-9060-7bc199e23257
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/202ab3f6-48bb-4626-9060-7bc199e23257) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?
 
@@ -60,10 +15,162 @@ This project is built with .
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Features
 
-Simply open [Lovable](https://lovable.dev/projects/202ab3f6-48bb-4626-9060-7bc199e23257) and click on Share -> Publish.
+- **Natural Language Feed Customization**: Simply tell the system what content you want to see
+- **Dynamic Feed Generation**: Content is fetched from multiple sources based on your preferences
+- **Social Prompting**: Fine-tune your feed with natural requests like "Show me more posts from @balajis" or "Less AI content"
+- **Multi-platform Support**: Access your personalized feed via web app, browser extension, or API
 
-## I want to use a custom domain - is that possible?
+## System Architecture
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+AI Smart Feed consists of three main components:
+
+1. **Backend Server**: Node.js/Express server with OpenAI integration
+2. **Web Frontend**: Angular-based user interface
+3. **Browser Extension**: Chrome extension for quick access and content enhancement
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14+)
+- npm or yarn
+- Angular CLI
+- OpenAI API key
+
+### Backend Setup
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/ai-smart-feed.git
+   cd ai-smart-feed/backend
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file with your OpenAI API key
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   PORT=3000
+   ```
+
+4. Start the server
+   ```bash
+   npm start
+   ```
+
+The backend server will be running at http://localhost:3000
+
+### Frontend Setup
+
+1. Navigate to the frontend directory
+   ```bash
+   cd ../frontend
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Start the development server
+   ```bash
+   ng serve
+   ```
+
+The frontend will be available at http://localhost:4200
+
+### Browser Extension Setup
+
+1. Navigate to the extension directory
+   ```bash
+   cd ../extension
+   ```
+
+2. Build the extension
+   ```bash
+   npm install
+   npm run build
+   ```
+
+3. Load the extension in Chrome:
+   - Open Chrome and go to `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked" and select the `extension/dist` directory
+
+## Usage
+
+### Web Interface
+
+1. Visit http://localhost:4200
+2. Enter your content preferences in natural language
+3. Browse your personalized feed
+4. Click on topics or authors to refine preferences
+
+### Browser Extension
+
+1. Click the AI Smart Feed icon in your browser
+2. Enter preferences or quick commands
+3. View your feed in the popup or click to open the full dashboard
+
+### API Endpoints
+
+- `POST /api/update-preferences`: Update user preferences with natural language command
+- `GET /api/refresh-feed`: Get personalized feed based on current preferences
+- `GET /api/current-preferences`: Get current user preference settings
+
+## Customization
+
+### Adding New Content Sources
+
+Edit the `FeedManager` class in `server.js` to add new content sources:
+
+```javascript
+async fetchNewContentSource() {
+  // Implementation for new content source
+  return this.generatePlaceholderContent('new-source', 5);
+}
+```
+
+Then add the source to the `refreshFeed` method.
+
+### Extending the UI
+
+The Angular component can be extended with new features by modifying `app.component.ts`.
+
+## Roadmap
+
+- [ ] User accounts and preference saving
+- [ ] AI-powered content summarization
+- [ ] Image and video content support
+- [ ] Mobile app version
+- [ ] Advanced analytics on content consumption
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+
+- OpenAI for providing the AI capabilities
+- Angular team for the frontend framework
+- All open-source contributors
+
+---
+
+Created with ❤️ by Soumyajit
+
